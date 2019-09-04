@@ -1,4 +1,5 @@
 let robot = {
+  placed: false,
   x: null,
   y: null,
   f: "",
@@ -8,11 +9,11 @@ function place(x, y, f) {
   robot.x = x;
   robot.y = y;
   robot.f = f;
-  console.log(robot.x, robot.y, robot.f) 
+  robot.placed = true
 }
 
 function move() {
-  if (robot.x == null) {
+  if (robot.placed == false) {
     return
   }
   (robot.f == 'north') ? robot.x = robot.x + 1 : (robot.f == 'south' ) ? robot.x = robot.x - 1 : (robot.f == 'east' ) ? robot.y = robot.y + 1 : (robot.f == 'west' ) ? robot.y = robot.y - 1 : null
@@ -32,7 +33,7 @@ function move() {
 }
 
 function right() {
-  if (robot.x == null) {
+  if (robot.placed == false) {
     return
   }
   if (robot.f == 'north') {
@@ -48,7 +49,7 @@ function right() {
 }
 
 let left = () => {
-  if (robot.x == null) {
+  if (robot.placed == false) {
     return
   }
   if (robot.f == 'north') {
@@ -64,7 +65,7 @@ let left = () => {
 }
 
 function report() {
-  if (robot.x == null) {
+  if (robot.placed == false) {
     return
   }
   console.log(robot.x, robot.y, robot.f) 
