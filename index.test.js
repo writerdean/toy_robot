@@ -3,6 +3,6 @@ test('Jest is working', () => {
 });
 
 test('Robot is not on grid', () => {
-  
-  expect().
+  let robot.x = null
+  expect(robot.x).toBe('null')
 })

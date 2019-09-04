@@ -12,6 +12,9 @@ function place(x, y, f) {
 }
 
 function move() {
+  if (robot.x == null) {
+    return
+  }
   (robot.f == 'north') ? robot.x = robot.x + 1 : (robot.f == 'south' ) ? robot.x = robot.x - 1 : (robot.f == 'east' ) ? robot.y = robot.y + 1 : (robot.f == 'west' ) ? robot.y = robot.y - 1 : null
   if (robot.x == 5) {
     robot.x = 4
@@ -29,6 +32,9 @@ function move() {
 }
 
 function right() {
+  if (robot.x == null) {
+    return
+  }
   if (robot.f == 'north') {
     robot.f = 'east'
   } else if (robot.f == 'east') {
@@ -42,6 +48,9 @@ function right() {
 }
 
 let left = () => {
+  if (robot.x == null) {
+    return
+  }
   if (robot.f == 'north') {
     robot.f = 'west'
   } else if (robot.f == 'west') {
@@ -55,6 +64,9 @@ let left = () => {
 }
 
 function report() {
+  if (robot.x == null) {
+    return
+  }
   console.log(robot.x, robot.y, robot.f) 
 }
 
