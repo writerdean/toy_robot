@@ -1,13 +1,12 @@
 let robot = {
-  position: {x: null, y: null},
-  direction: "",
-  move: true
+  x: null,
+  y: null,
+  f: "",
 }
-function place(x, y, d) {
-  robot.position.x = x;
-  robot.position.y = y;
-  robot.direction = d;
-  robot.move = true;
+function place(x, y, f) {
+  robot.x = x;
+  robot.y = y;
+  robot.f = f;
 }
 // place(0,1,'south')
 // place(4,1,'north')
@@ -15,34 +14,21 @@ function place(x, y, d) {
 // place(3,0,'west')
 
 function move() {
-  let x = robot.position.x
-  let y = robot.position.y
-  let direction = robot.direction
-  if (x == 0 || x == 4) {
-    if (x == 0 && direction == 'south') {
-      robot.move = false;
-    }
-    if (x == 4 && direction == 'north') {
-      robot.move = false;
-    }
+  (robot.f == 'north') ? robot.x = robot.x + 1 : (robot.f == 'south' ) ? robot.x = robot.x - 1 : (robot.f == 'east' ) ? robot.y = robot.y + 1 : (robot.f == 'west' ) ? robot.y = robot.y - 1 : null
+  if (robot.x == 5) {
+    robot.x = 4
   }
-  if (y === 0 || y === 4) {
-    if (y == 0 && direction == 'west') {
-      robot.move = false;
-    }
-    if (y == 4 && direction == 'wast') {
-      robot.move = false;
-    }
+  if (robot.x == -1) {
+    robot.x = 0
   }
-
-  if (robot.move==true) {
-    direction=='north' ? robot.position.x = robot.position.x+1 : direction=='south' ? robot.position.x = robot.position.x-1 : direction=='east' ? robot.position.y = robot.position.y-1 : robot.position.y = robot.position.y+1
+  if (robot.y == 5) {
+    robot.y = 4
   }
-};
-
-function report() {
-  let reportDisplay = robot.position.x + robot.position.y + robot.direction + robot.move
-  return reportDisplay
+  if (robot.y == -1) {
+    robot.y = 0
+  }
 }
 
-//  || (robot.position.x==4 && robot.direction=='north') || (robot.position.y==0 && robot.direction=='west') || (robot.position.y==4 && robot.direction=='east') 
+function report() {
+  console.log(robot.x, robot.y, robot.f) 
+}
