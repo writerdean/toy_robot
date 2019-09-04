@@ -6,8 +6,8 @@ let robot = {
 function place(x, y, d) {
   robot.position.x = x;
   robot.position.y = y;
-  robot.direction = d,
-  robot.move = true
+  robot.direction = d;
+  robot.move = true;
 }
 // place(0,1,'south')
 // place(4,1,'north')
@@ -18,7 +18,6 @@ function move() {
   let x = robot.position.x
   let y = robot.position.y
   let direction = robot.direction
-  console.log(x, direction)
   if (x == 0 || x == 4) {
     if (x == 0 && direction == 'south') {
       robot.move = false;
@@ -35,7 +34,6 @@ function move() {
       robot.move = false;
     }
   }
-  console.log(`robot.move`, robot.move)
 
   if (robot.move==true) {
     direction=='north' ? robot.position.x = robot.position.x+1 : direction=='south' ? robot.position.x = robot.position.x-1 : direction=='east' ? robot.position.y = robot.position.y-1 : robot.position.y = robot.position.y+1
@@ -44,7 +42,6 @@ function move() {
 
 function report() {
   let reportDisplay = robot.position.x + robot.position.y + robot.direction + robot.move
-  console.log(reportDisplay)
   return reportDisplay
 }
 
