@@ -4,8 +4,6 @@ const robot = {
   y: null,
   f: '',
 };
-// define left as if current f === 'NORTH', f = 'EAST', etc.
-// define right as if current f === 'NORTH', f = 'WEST', etc.
 
 const place = (x, y, f) => {
   robot.x = x;
@@ -18,7 +16,24 @@ const move = () => {
   if (robot.placed === false) {
     return;
   }
-  (robot.f === 'north') ? robot.x = robot.x + 1 : (robot.f === 'south') ? robot.x = robot.x - 1 : (robot.f === 'east') ? robot.y = robot.y + 1 : (robot.f === 'west') ? robot.y = robot.y - 1 : null;
+  const direction = robot.f;
+  switch (direction) {
+    case 'NORTH':
+      robot.x += 1;
+      break;
+    case 'SOUTH':
+      robot.f -= 1;
+      break;
+    case 'EAST':
+      robot.y += 1;
+      break;
+    case 'WEST':
+      robot.y -= 1;
+      break;
+    default:
+      break;
+  }
+
   if (robot.x === 5) {
     robot.x = 4;
   }
@@ -63,7 +78,7 @@ const left = () => {
   const direction = robot.f;
   switch (direction) {
     case 'NORTH':
-      robot.f = 'WESTR';
+      robot.f = 'WEST';
       break;
     case 'SOUTH':
       robot.f = 'EAST';
