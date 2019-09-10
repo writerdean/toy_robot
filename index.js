@@ -4,7 +4,8 @@ const robot = {
   y: null,
   f: '',
 };
-
+// define left as if current f === 'NORTH', f = 'EAST', etc.
+// define right as if current f === 'NORTH', f = 'WEST', etc.
 
 const place = (x, y, f) => {
   robot.x = x;
@@ -36,14 +37,22 @@ const right = () => {
   if (robot.placed === false) {
     return;
   }
-  if (robot.f === 'north') {
-    robot.f = 'east';
-  } else if (robot.f === 'east') {
-    robot.f = 'south';
-  } else if (robot.f === 'south') {
-    robot.f = 'west';
-  } else if (robot.f === 'west') {
-    robot.f = 'north';
+  const direction = robot.f;
+  switch (direction) {
+    case 'NORTH':
+      robot.f = 'EAST';
+      break;
+    case 'SOUTH':
+      robot.f = 'WEST';
+      break;
+    case 'EAST':
+      robot.f = 'SOUTH';
+      break;
+    case 'WEST':
+      robot.f = 'NORTH';
+      break;
+    default:
+      break;
   }
 };
 
@@ -51,14 +60,22 @@ const left = () => {
   if (robot.placed === false) {
     return;
   }
-  if (robot.f === 'north') {
-    robot.f = 'west';
-  } else if (robot.f === 'west') {
-    robot.f = 'south';
-  } else if (robot.f === 'south') {
-    robot.f = 'east';
-  } else if (robot.f === 'east') {
-    robot.f = 'north';
+  const direction = robot.f;
+  switch (direction) {
+    case 'NORTH':
+      robot.f = 'WEST';
+      break;
+    case 'SOUTH':
+      robot.f = 'EAST';
+      break;
+    case 'EAST':
+      robot.f = 'NORTH';
+      break;
+    case 'WEST':
+      robot.f = 'SOUTH';
+      break;
+    default:
+      break;
   }
 };
 
