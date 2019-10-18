@@ -1,4 +1,3 @@
-
 class Board {
   constructor(robot) {
     this.robot = {
