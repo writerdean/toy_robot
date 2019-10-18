@@ -1,107 +1,112 @@
-const robot = {
-  placed: false,
-  x: null,
-  y: null,
-  f: '',
-};
-
-const place = (x, y, f) => {
-  robot.x = x;
-  robot.y = y;
-  robot.f = f;
-  robot.placed = true;
-};
-
-const move = () => {
-  if (robot.placed === false) {
-    return;
-  }
-  const direction = robot.f;
-  switch (direction) {
-    case 'NORTH':
-      robot.x += 1;
-      break;
-    case 'SOUTH':
-      robot.f -= 1;
-      break;
-    case 'EAST':
-      robot.y += 1;
-      break;
-    case 'WEST':
-      robot.y -= 1;
-      break;
-    default:
-      break;
+class Board {
+  constructor(robot) {
+    this.robot = {
+      placed: false,
+      x: null,
+      y: null,
+      f: '',
+    }
   }
 
-  if (robot.x === 5) {
-    robot.x = 4;
-  }
-  if (robot.x === -1) {
-    robot.x = 0;
-  }
-  if (robot.y === 5) {
-    robot.y = 4;
-  }
-  if (robot.y === -1) {
-    robot.y = 0;
-  }
-};
+  place(x, y, f) {
+    this.robot.x = x;
+    this.robot.y = y;
+    this.robot.f = f;
+    this.robot.placed = true;
+  };
 
-const right = () => {
-  if (robot.placed === false) {
-    return;
-  }
-  const direction = robot.f;
-  switch (direction) {
-    case 'NORTH':
-      robot.f = 'EAST';
-      break;
-    case 'SOUTH':
-      robot.f = 'WEST';
-      break;
-    case 'EAST':
-      robot.f = 'SOUTH';
-      break;
-    case 'WEST':
-      robot.f = 'NORTH';
-      break;
-    default:
-      break;
-  }
-};
+  report() {
+    if (this.robot.placed === false) {
+      return;
+    }
+    console.log(`${this.robot.x},${this.robot.y},${this.robot.f}`);
+  };
 
-const left = () => {
-  if (robot.placed === false) {
-    return;
-  }
-  const direction = robot.f;
-  switch (direction) {
-    case 'NORTH':
-      robot.f = 'WEST';
-      break;
-    case 'SOUTH':
-      robot.f = 'EAST';
-      break;
-    case 'EAST':
-      robot.f = 'NORTH';
-      break;
-    case 'WEST':
-      robot.f = 'SOUTH';
-      break;
-    default:
-      break;
-  }
-};
+  move() {
+    if (this.robot.placed === false) {
+      return;
+    }
+    const direction = this.robot.f;
+    switch (direction) {
+      case 'NORTH':
+        this.robot.x += 1;
+        break;
+      case 'SOUTH':
+        this.robot.f -= 1;
+        break;
+      case 'EAST':
+        this.robot.y += 1;
+        break;
+      case 'WEST':
+        this.robot.y -= 1;
+        break;
+      default:
+        break;
+    }
+  
+    if (this.robot.x === 5) {
+      this.robot.x = 4;
+    }
+    if (this.robot.x === -1) {
+      this.robot.x = 0;
+    }
+    if (this.robot.y === 5) {
+      this.robot.y = 4;
+    }
+    if (this.robot.y === -1) {
+      this.robot.y = 0;
+    }
+  };
+  
+  right() {
+    if (this.robot.placed === false) {
+      return;
+    }
+    const direction = this.robot.f;
+    switch (direction) {
+      case 'NORTH':
+        this.robot.f = 'EAST';
+        break;
+      case 'SOUTH':
+        this.robot.f = 'WEST';
+        break;
+      case 'EAST':
+        this.robot.f = 'SOUTH';
+        break;
+      case 'WEST':
+        this.robot.f = 'NORTH';
+        break;
+      default:
+        break;
+    }
+  };
+  
+  left() {
+    if (this.robot.placed === false) {
+      return;
+    }
+    const direction = this.robot.f;
+    switch (direction) {
+      case 'NORTH':
+        this.robot.f = 'WEST';
+        break;
+      case 'SOUTH':
+        this.robot.f = 'EAST';
+        break;
+      case 'EAST':
+        this.robot.f = 'NORTH';
+        break;
+      case 'WEST':
+        this.robot.f = 'SOUTH';
+        break;
+      default:
+        break;
+    }
+  };
+}
 
-const report = () => {
-  if (robot.placed === false) {
-    return;
-  }
-  console.log(`${robot.x},${robot.y},${robot.f}`);
-};
 
-// place(0,1,'south')
-// place(4,1,'north')
-// place(0,4,'east')
-// place(3,0,'west')
+
+
+
+const x = new Board()
